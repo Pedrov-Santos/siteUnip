@@ -1,0 +1,51 @@
+.body {
+	background-image: url(/imagens/fundo8.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%
+}
+
+.nav-item {
+	margin: 0 5px 0 0;
+}
+
+#botaoLogin {
+	float: right;
+	margin: 0 10px 0 10px;
+	border-radius: 25px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.row {
+	text-transform: uppercase;
+	margin: 0 0 0 0;
+}
+
+.cor {
+	margin-top: 5px;
+	color: white;
+	font-family: Times, "Times New Roman", Georgia, serif;
+}
+/* Style the form */
+#regForm {
+	background-color: #aaaaaa;
+	margin: 100px auto;
+	padding: 40px;
+	width: 70%;
+	min-width: 300px;
+	-webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+	-moz-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+	box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+}
+.form-control{
+	-webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+	-moz-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+	box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+	margin-top: 5px;
+}
+#salvarCliente{
+	-webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+	-moz-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+	box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+	margin-top: 10px;
+}
