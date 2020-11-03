@@ -6,12 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
@@ -26,52 +26,57 @@ public class CadastroCliente {
 	
 	@Size(min = 10 , message = "Nome incorreto.")
 	@Size(max = 75 , message =  "Nome excedeu o limíte de caracteres."
-			+ "Solução: Abreviar. ")
-	@NotBlank
+			+ "    Solução: Abreviar. ")
+	@Pattern(regexp = "[a-zA-Záãâéêíîóôõú\s]+$" , message = "Nome Incorreto.")
+	@NotBlank(message = "Nome Vaio ou em Branco.")
 	private String nomeCliente;
 
-	@NotBlank
+	@NotBlank(message = "email obrigátorio")
 	private String email;
 	
-	@NotBlank		
+	@NotBlank(message = "Confirmação do email obrigátorio")		
 	private String emailConfirmacao;
 
-	@NotBlank
+	@NotBlank(message = "RG obrigátorio")
 	private String rg;
 	
-	@NotBlank
+	@CPF(message = "CPF inválido.")
+	@NotBlank(message = "CPF obrigátorio")
 	private String cpf;
 	
-	@NotBlank
+	@NotBlank(message = "Celular obrigátorio")
 	private String telefone;
 	
-	@Past(message = "A data deve estar no passado.")
+	@Past(message = "A Data deve estar no passado.")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dataNascimento;
 	
-	@NotBlank
+	@NotBlank(message = "CEP obrigátorio")
 	private String cep;
 
 	private StatusEstado estado;
 	
-	@NotBlank
+	@NotBlank(message = "Cidade obrigátorio")
+	@Pattern(regexp = "[a-zA-Záãâéêíîóôõú\s]+$" , message = "Cidade Incorreta.")
 	private String cidade;
 	
-	@NotBlank
+	@NotBlank(message = "Rua obrigátorio")
 	private String rua;
 	
-	@NotBlank
+	@NotBlank(message = "Numero da Casa obrigátorio")
 	private String numeroCasa;
 	
-	@NotBlank
+	@NotBlank(message = "Bairro obrigátorio")
+	@Pattern(regexp = "[a-zA-Záãâéêíîóôõú\s]+$" , message = "Bairro Incorreto.")
 	private String bairro;
 	
 	private String complemento;
 	
-	@NotBlank
+	@NotBlank(message = "Senha obrigátorio")
 	private String secret;
 	
-	@NotBlank
+	@Size(max = 18 , min = 6 ,message = "A senha deve conter entre 6 e 18 caracteris")
+	@NotBlank(message = "Confirmação de senha obrigátorio")
 	private String secretConfirmacao;
 
 	public Long getId() {

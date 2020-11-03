@@ -40,19 +40,3 @@ $(function(){
 	$(".cep").mask("99999-999",{placeholder:" "});
 });
 
-$form-validation-states: map-merge(
-  (
-    "valid": (
-      "color": $form-feedback-valid-color,
-      "icon": $form-feedback-icon-valid
-    ),
-    "invalid": (
-      "color": $form-feedback-invalid-color,
-      "icon": $form-feedback-icon-invalid
-    )
-  ),
-  $form-validation-states
-);
-@each $state, $data in $form-validation-states {
-  @include form-validation-state($state, map-get($data, color), map-get($data, icon));
-}

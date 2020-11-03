@@ -6,42 +6,32 @@
 
 <section layout:fragment="conteudo">
 
-	<form id="regForm" class="needs-validation" novalidate method="post"
+	<form id="regForm" class="needs-validation" novalidate method="POST"
 		action="/cadastro" th:object="${cadastroCliente}">
 
+		<div layout:insert="MensagemSuccess"></div>
+		<div layout:insert="MensagemDanger"></div>
 <input type = "hidden" th:field="*{id}"/>
 
-	<div class="alert alert-success" th:if="${! #strings.isEmpty(mensagem)}">
-			<button type="button" class="close " data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">&times;</span></button>
-		<span th:text="${mensagem}"></span>
-</div>
-
-		<div layout:insert="MensagemDanger"></div>
 
 		<div class="form-gruop row cor">
 
-			<label for="nomeCliente" class="col-sm-3 col-form-label text-right cor">Nome
+			<label for="nomeCliente" class="col-sm-2 col-form-label text-right cor">Nome
 				Completo</label>
-			<div class="col-sm-4">
-				<input type="text" required pattern="[a-zA-Záãâéêíîóôõú\s]+$" class="form-control" placeholder = "apenas letras"
+			<div class="col-sm-3">
+				<input type="text" required  class="form-control" placeholder = "apenas letras"
 					th:field="*{nomeCliente}">
-					      <div class="invalid-tooltip">
-        Please provide a valid zip.
-      </div>
+					
 			</div>
 
-		</div>
-		<div class="form-gruop row ">
+		
 
 			<label for="cpf" class="col-sm-3 col-form-label text-right cor">CPF</label>
-			<div class="col-sm-2">
+			<div class="col-sm-3">
 				<input type="text" class="form-control cpf " required pattern="[0-9]+$" th:field="*{cpf}">
 			</div>
 
-		</div>
 
-		<div class="form-gruop row ">
 
 			<label for="dataNascimento"
 				class="col-sm-3 col-form-label text-right cor ">Data de
@@ -51,17 +41,12 @@
 					th:field="*{dataNascimento}">
 			</div>
 
-		</div>
 
-		<div class="form-group row">
 			<label for="rg"
 				class="col-sm-3 col-form-label text-right cor">RG</label>
 			<div class="col-sm-2">
 				<input type="text" class=" form-control rg" th:field="*{rg}">
 			</div>
-		</div>
-
-		<div class="form-gruop row ">
 
 			<label for="telefone"
 				class="col-sm-3 col-form-label text-right cor">Celular</label>
@@ -70,9 +55,7 @@
 					th:field="*{telefone}">
 			</div>
 
-		</div>
 
-		<div class="form-gruop row ">
 
 			<label for="cep"
 				class="col-sm-3 col-form-label text-right cor">CEP</label>
@@ -80,9 +63,7 @@
 				<input type="text" class="form-control cep" required pattern="[0-9]+$" th:field="*{cep}">
 			</div>
 
-		</div>
 
-		<div class="form-gruop row ">
 
 			<label for="rua"
 				class="col-sm-3 col-form-label text-right cor">Rua</label>
@@ -90,9 +71,7 @@
 				<input type="text" class="form-control  " required th:field="*{rua}">
 			</div>
 
-		</div>
 
-		<div class="form-gruop row ">
 
 			<label for="numeroCasa"
 				class="col-sm-3 col-form-label text-right cor">Numero </label>
@@ -101,9 +80,7 @@
 					th:field="*{numeroCasa}">
 			</div>
 
-		</div>
 
-		<div class="form-gruop row ">
 
 			<label for="complemento"
 				class="col-sm-3 col-form-label text-right cor">Complemento </label>
@@ -112,9 +89,7 @@
 					th:field="*{complemento}">
 			</div>
 
-		</div>
 
-		<div class="form-gruop row ">
 
 			<label for="bairro"
 				class="col-sm-3 col-form-label text-right cor">Bairro</label>
@@ -123,86 +98,65 @@
 					th:field="*{bairro}">
 			</div>
 
-		</div>
 
-		<div class="form-gruop row ">
 
 			<label for="cidade"
-				class="col-sm-3 col-form-label text-right cor">Municiopio</label>
+				class="col-sm-3 col-form-label text-right cor">Cidade</label>
 			<div class="col-sm-2">
 				<input type="text" class="form-control  " required
 					th:field="*{cidade}">
 			</div>
 
-		</div>
 
-		<div class="form-gruop row ">
 			<label class="col-sm-3 col-form-label text-right cor"
 				for="estado">Selecionar Estado</label>
-			<div class="col-sm-2">
+			<div class="col-sm-3">
 				<select class="form-control" id="estado" th:field="*{estado}">
 					<option th:each="estado : ${todosEstados}" th:value="${estado}"
 						th:text="${estado.nome}"></option>
 
 				</select>
 			</div>
-		</div>
 
-		<div class="form-gruop row ">
 
 			<label for="email"
-				class="col-sm-3 col-form-label text-right cor">E-mail</label>
-			<div class="col-sm-2">
+				class="col-sm-2 col-form-label text-right cor">E-mail</label>
+			<div class="col-sm-3">
 				<input type="email" class="form-control  " required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder = "email@example.com"
 					th:field="*{email}">
 			</div>
 
-		</div>
-
-
-		<div class="form-gruop row ">
-
-			<label for="emailConfirmacao"
-				class="col-sm-3 col-form-label text-right cor">Confirmar
-				E-mail</label>
-			<div class="col-sm-2">
-				<input type="text" class="form-control  " required  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder = "email@example.com"
-					th:field="*{emailConfirmacao}">
-			</div>
-
-		</div>
-
-
-		<div class="form-gruop row ">
 
 			<label for="secret"
 				class="col-sm-3 col-form-label text-right cor">Senha</label>
-			<div class="col-sm-2">
+			<div class="col-sm-3">
 				<input type="password" class="form-control  " required
 					th:field="*{secret}">
 					
 			</div>
-
-
-
-		</div>
-
-
-		<div class="form-gruop row ">
+			
+			<label for="emailConfirmacao"
+				class="col-sm-2 col-form-label text-right cor">Confirmar
+				E-mail</label>
+			<div class="col-sm-3">
+				<input type="email" class="form-control  " required  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder = "email@example.com"
+					th:field="*{emailConfirmacao}">
+			</div>
 
 			<label for="secretConfirmacao"
 				class="col-sm-3 col-form-label text-right cor">Confirmar
 				Senha</label>
-			<div class="col-sm-2">
+			<div class="col-sm-3">
 				<input type="password" class="form-control  " required
-					th:field="*{secretConfirmacao}" th:classappend="${#fields.hasErrors('secretConfirmacao') } ? 'is-invalid'">
+					th:field="*{secretConfirmacao}" >
 			</div>
 
 
 
-		</div>
 
+		</div>
 		<div id="salvarCliente">
+		
 			<label for="valorEvento" class=" col-form-label text-right cor"></label>
 			<button class="btn btn-success col-sm-12" type="submit">Salvar</button>
 		</div>

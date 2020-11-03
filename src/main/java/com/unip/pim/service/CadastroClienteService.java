@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.unip.pim.model.CadastroCliente;
 import com.unip.pim.repository.CadastroClienteRepository;
 
 @Service
@@ -25,6 +26,19 @@ public class CadastroClienteService {
 
 	    
 		return idade;
+		
+	}
+
+	public Object validarIgual(CadastroCliente novoCliente) {
+		if(novoCliente.getSecret() == novoCliente.getSecretConfirmacao()) {
+			
+			String igual = "igual";
+			return igual;
+		}else {
+			
+			String diferente = "diferente";
+			return diferente;
+		}
 		
 	}
 
